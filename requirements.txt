@@ -17,7 +17,7 @@ cffi==1.14.4              # via argon2-cffi
 chardet==4.0.0            # via requests
 cloudpickle==1.6.0        # via tensorflow-probability
 cycler==0.10.0            # via matplotlib
-decorator==4.4.2          # via ipython, tensorflow-probability
+decorator==4.4.2          # via ipython, networkx, tensorflow-probability
 defusedxml==0.6.0         # via nbconvert
 dill==0.3.3               # via tensorflow-datasets
 dm-tree==0.1.5            # via tensorflow-probability
@@ -56,6 +56,7 @@ nbclient==0.5.1           # via nbconvert
 nbconvert==6.0.7          # via notebook
 nbformat==5.0.8           # via nbclient, nbconvert, notebook
 nest-asyncio==1.4.3       # via nbclient
+networkx==2.5             # via -r requirements.in
 notebook==6.1.5           # via jupyterlab, jupyterlab-server
 numpy==1.19.4             # via -r requirements.in, h5py, keras-preprocessing, matplotlib, opencv-python, opt-einsum, pandas, scikit-learn, scipy, seaborn, tensorboard, tensorflow, tensorflow-datasets, tensorflow-probability
 oauthlib==3.1.0           # via requests-oauthlib
