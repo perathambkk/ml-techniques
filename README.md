@@ -5,7 +5,7 @@ A collection of machine learning codes in python's numpy and tensorflow.
 ### Clustering
 * k-means [19 Dec 2020]
 * Spectral Clustering
-** Unnormalized Spectral Clustering [23 Dec 2020]
+	* Unnormalized Spectral Clustering [23 Dec 2020]
 
 ## Requirements
 Install requirements.txt file to make sure correct versions of libraries are being used.
