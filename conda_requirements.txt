@@ -106,11 +106,11 @@ requests-oauthlib=1.3.0=pypi_0
 rsa=4.6=pypi_0
 ruamel_yaml=0.15.87=py38h7b6447c_1
 scikit-learn=0.23.2=pypi_0
+scipy=1.5.4=pypi_0
 seaborn=0.11.0=pypi_0
 send2trash=1.5.0=pypi_0
 setuptools=50.3.1=py38h06a4308_1
 six=1.15.0=py38h06a4308_0
-sklearn=0.0=pypi_0
 sqlite=3.33.0=h62c20be_0
 tensorboard=2.4.0=pypi_0
 tensorboard-plugin-wit=1.7.0=pypi_0
