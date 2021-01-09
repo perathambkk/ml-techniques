@@ -15,6 +15,8 @@ def pca(X):
 	
 	"""
 	ni, nd = X.shape
+
+	# TODO: PCA for small samples where nd >> ni
 	C = np.cov(X.T)
 
 	w, v = LA.eig(C)
