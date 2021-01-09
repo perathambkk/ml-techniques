@@ -6,6 +6,10 @@ Author: Peratham Wiriyathammabhum
 import numpy as np 
 import pandas as pd 
 from sklearn.neighbors import NearestNeighbors
+from numpy import inf
+
+from scipy.sparse import csr_matrix
+from scipy.sparse.csgraph import dijkstra
 
 def affinity_graph(X):
 	'''
@@ -48,6 +52,28 @@ def sparse_affinity_graph(X):
 			A[i][j] = dist
 			A[j][i] = dist # by symmetry
 	return A
+
+def geodesic_graph(X, mode='affinity', knn=3, eta=0.01):
+	'''
+	The geodesic graph G.
+	'''
+	if mode == 'affinity':
+		G = affinity_graph(X)
+		G[abs(G) > eta] = 0
+	elif mode == 'nearestneighbor':
+		G = knn_graph(X, knn=knn)
+		G[G == 0] = 0
+	else:
+		pass
+	# compute shortest path usig Dijkstra
+	ni, ni = G.shape
+	G = csr_matrix(G)
+	distM = []
+	for i in range(ni):
+		dist_matrix = dijkstra(csgraph=G, directed=False, indices=i, return_predecessors=False)
+		distM.append(dist_matrix)
+	distM = np.asarray(distM)
+	return distM
 
 def laplacian_graph(X, mode='affinity', knn=3, eta=0.01, sigma=2.5):
 	'''

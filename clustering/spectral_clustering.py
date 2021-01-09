@@ -77,7 +77,7 @@ def main(opts):
 if __name__ == '__main__':
 	import argparse
 
-	parser = argparse.ArgumentParser(description='run k-means.')
+	parser = argparse.ArgumentParser(description='run spectral clustering.')
 	parser.add_argument('--k', dest='k',
 					  help='number of clusters',
 					  default=2, type=int)
