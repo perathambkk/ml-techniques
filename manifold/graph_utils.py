@@ -32,12 +32,12 @@ def knn_graph(X, knn=4):
 	nbrs = NearestNeighbors(n_neighbors=(knn+1), algorithm='ball_tree').fit(X)
 	distances, indices = nbrs.kneighbors(X)
 	A = np.zeros((ni, ni))
-	for ind in indices:
+	for dist, ind in zip(distances, indices):
 		i0 = ind[0]
-		for i in ind[1:]:
-			dist = distances[ind[0],i]
-			A[ind[0], i] = dist
-			A[i, ind[0]] = dist # by symmetry
+		for i in range(1,knn+1):
+			d = dist[i]
+			A[i0, i] = d
+			A[i, i0] = d # by symmetry
 	return A
 
 def sparse_affinity_graph(X):
