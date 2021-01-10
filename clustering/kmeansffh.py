@@ -7,16 +7,17 @@ import numpy as np
 import pandas as pd 
 import matplotlib.pyplot as plt 
 
-def kmeanspp(X, k=3, thres=10**-5, max_iters=200):
+def kmeansffh(X, k=3, thres=10**-5, max_iters=200):
 	"""
-	Perform k-means++ clustering on an input row matrix X.
+	Perform k-means clustering on an input row matrix X.
+	Use the farthest-first heuristics (ffh) for intialization.
 	See: http://www.ciml.info/dl/v0_9/ciml-v0_9-ch13.pdf
 	"""
 	ni, nd = X.shape
 	mu = np.zeros((k, nd))
 	krows = np.random.choice(ni, 1, replace=False)
 	nmu = X[krows]
-	nmu = kmeanspp_init(nmu, X, k)
+	nmu = kmeansffh_init(nmu, X, k)
 	nite = 0
 	while not terminating_cond(mu, nmu, thres, nite, max_iters):
 		mu = nmu
@@ -34,14 +35,16 @@ def kmeanspp(X, k=3, thres=10**-5, max_iters=200):
 			print('[Info] iter: {}'.format(nite))
 	return mu
 
-def kmeanspp_init(nmu, X, k):
+def kmeansffh_init(nmu, X, k):
 	ni, nd = X.shape
 	for i in range(1, k):
 		dist = ((X[:,None,:] - nmu[None,:,:])**2).sum(axis=2)
 		dist = dist.min(axis=1)
 		dist /= dist.sum()
-		newm = np.random.choice(ni, 1, replace=False, p = dist)
+		newm = np.argmax(dist, axis=0)
+		# newm = np.random.choice(ni, 1, replace=False, p = dist)
 		newrow = X[newm]
+		newrow = np.expand_dims(newrow, axis=0)
 		nmu = np.append(nmu, newrow, axis=0)
 	return nmu
 
@@ -61,7 +64,7 @@ def main(opts):
 	from sklearn import datasets
 	iris = datasets.load_iris()
 	X = iris.data
-	mu = kmeanspp(X, k=k, thres=10**-5, max_iters=max_iters)
+	mu = kmeansffh(X, k=k, thres=10**-5, max_iters=max_iters)
 
 	# plot
 	dist = ((X[:,None,:] - mu[None,:,:])**2).sum(axis=2)

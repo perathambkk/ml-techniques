@@ -4,6 +4,7 @@ A collection of machine learning codes in python's numpy and tensorflow.
 ## Techniques
 ### Clustering
 * k-means [19 Dec 2020]
+	* k-means with farthest-first heuristis (ffh) [11 Jan 2021]
 	* k-means++ [10 Jan 2021]
 * Spectral Clustering
 	* Unnormalized Spectral Clustering [23 Dec 2020]
