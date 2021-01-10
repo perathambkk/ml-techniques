@@ -7,7 +7,7 @@ import numpy as np
 import pandas as pd 
 import matplotlib.pyplot as plt 
 import scipy.sparse.linalg as linalg
-from graph_utils import *
+from ..utils.graph_utils import *
 from kmeans import kmeans
 
 def spectral_clustering(X, mode='affinity', k=3, knn=4, eta=0.01, sigma=2.5, max_iters=200):

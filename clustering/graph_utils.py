@@ -61,7 +61,7 @@ def laplacian_graph(X, mode='affinity', knn=3, eta=0.01, sigma=2.5):
 	elif mode == 'gaussian':
 		W = affinity_graph(X)
 		bandwidth = 2.0*(sigma**2)
-		W = np.exp(W) / bangwidth
+		W = np.exp(W) / bandwidth
 	else:
 		pass
 	D = np.diag(W.sum(axis=1))
