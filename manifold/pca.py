@@ -16,6 +16,9 @@ def pca(X):
 	"""
 	ni, nd = X.shape
 
+	# centering
+	X = X - X.mean(axis=0)
+
 	# TODO: PCA for small samples where nd >> ni
 	C = np.cov(X.T)
 
