@@ -9,11 +9,12 @@ import matplotlib.pyplot as plt
 # import scipy.sparse.linalg as linalg
 from numpy import linalg as LA
 
-def pca(X):
+def pca(Xin):
 	"""
 	Perform PCA on an input row matrix X.
 	
 	"""
+	X = Xin.copy() # for safety
 	ni, nd = X.shape
 
 	# centering
