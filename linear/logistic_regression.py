@@ -36,16 +36,13 @@ def logistic_regression(Xin, yin, opts, thres=10**-5, max_epochs=200):
 			gz = sigmoid(np.matmul(bX, theta))
 			pred = gz
 			loss += cross_entropy_loss(pred, by)
-			print((pred).shape)
-			print((by).shape)
-			grad = (np.matmul(bX, (pred - by))).sum(axis=1)
+			grad = (np.matmul(bX.T, (pred - by))).sum(axis=1)
 			grad = np.expand_dims(grad, 1)
 			theta -= lr * grad  # sgd
 			ind += bsize
 		n_epoch += 1
 		if n_epoch % 10 == 0:
 			acc = compute_accuracy(X, y, theta)
-			print(loss.shape)
 			print('[Info] epoch: {} loss: {:.4f} acc: {:2.2f}%'.format(n_epoch, float(loss), float(acc)))
 	return theta
 
