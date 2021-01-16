@@ -8,7 +8,7 @@ import pandas as pd
 import matplotlib.pyplot as plt 
 eps = np.finfo(float).eps
 
-def logistic_regression(Xin, yin, opts, thres=10**-5, max_epochs=200):
+def linear_regression(Xin, yin, opts, thres=10**-5, max_epochs=200):
 	"""
 	Perform logistic regression on an input row matrix X and a target vector y.
 	See: http://www.ciml.info/dl/v0_9/ciml-v0_9-ch06.pdf
@@ -125,9 +125,9 @@ def terminating_cond(nite, max_iters):
 def main(opts):
 	max_epochs = opts['max_epochs']
 	from sklearn import datasets
-	breast_cancer = datasets.load_breast_cancer()
-	X, y = breast_cancer.data, breast_cancer.target
-	theta = logistic_regression(X, y, opts, thres=10**-5, max_epochs=max_epochs)
+	diabetes = datasets.load_diabetes()
+	X, y = diabetes.data, diabetes.target
+	theta = linear_regression(X, y, opts, thres=10**-5, max_epochs=max_epochs)
 
 	# plot
 	# input("Press Enter to continue...")
@@ -143,7 +143,7 @@ def main(opts):
 if __name__ == '__main__':
 	import argparse
 
-	parser = argparse.ArgumentParser(description='run logistic regression.')
+	parser = argparse.ArgumentParser(description='run linear regression.')
 	parser.add_argument('--lr', dest='lr',
 					  help='learning rate',
 					  default=1e-3, type=float)

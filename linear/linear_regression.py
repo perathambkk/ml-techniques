@@ -8,10 +8,10 @@ import pandas as pd
 import matplotlib.pyplot as plt 
 eps = np.finfo(float).eps
 
-def logistic_regression(Xin, yin, opts, thres=10**-5, max_epochs=200):
+def linear_regression(Xin, yin, opts, thres=10**-5, max_epochs=200):
 	"""
-	Perform logistic regression on an input row matrix X and a target vector y.
-	See: http://www.ciml.info/dl/v0_9/ciml-v0_9-ch06.pdf
+	Perform linear regression on an input row matrix X and a target vector y.
+	See: http://cs229.stanford.edu/notes-spring2019/cs229-notes1.pdf
 	"""
 	X = Xin.copy() # safety
 	y = yin.copy()
@@ -20,31 +20,21 @@ def logistic_regression(Xin, yin, opts, thres=10**-5, max_epochs=200):
 	ni, nd = X.shape
 	X = np.append(X, np.ones((ni, 1)), axis=1) # append the bias/const term
 	
-	theta = weight_init(nd, init_mode='random')
+	# theta = weight_init(nd, init_mode='random')
 	
 	lr = opts['lr']
 	bsize = opts['bsize']
 
-	n_epoch = 0
-	while not terminating_cond(n_epoch, max_epochs):
-		ind = 0
-		loss = 0
-		while ind < ni:
-			end = ind + bsize if ind + bsize <= ni else ni
-			bX = X[ind:end]
-			by = y[ind:end]
-			gz = sigmoid(np.matmul(bX, theta))
-			pred = gz
-			loss += cross_entropy_loss(pred, by)
-			grad = (np.matmul(bX.T, (pred - by))).sum(axis=1)
-			grad = np.expand_dims(grad, 1)
-			theta -= lr * grad  # sgd
-			ind += bsize
-		n_epoch += 1
-		if n_epoch % 10 == 0:
-			acc = compute_accuracy(X, y, theta)
-			print('[Info] epoch: {} loss: {:.4f} acc: {:2.2f}%'.format(n_epoch, float(loss), float(acc)))
-	return theta
+	"""
+	theta = X^{-1} * y. use a pseudo inverse for X^{-1}.
+	Solve the normal equation X'X\theta = X'y.
+	"""
+	# theta = np.matmul(np.matmul(np.linalg.pinv(np.matmul(X.T, X)), X.T), y)
+	theta = np.matmul(np.linalg.pinv(X), y)
+	pred = np.matmul(X, theta)
+	loss = square_loss(pred, y)
+	print('[Info] loss: {:.4f}'.format(float(loss)))
+	return theta, pred
 
 def compute_accuracy(X, yin, theta):
 	y = yin.copy()
@@ -67,28 +57,12 @@ def weight_init(nd, init_mode='random'):
 		pass
 	return theta
 
-def cross_entropy_loss(pred, yin):
+def square_loss(pred, yin):
 	"""
-	https://en.wikipedia.org/wiki/Cross_entropy#Cross-entropy_loss_function_and_logistic_regression
-	"""
-	# n = y.shape[0]
-	# loss = -(y*np.log(pred+eps) + (1-y)*np.log(1-pred+eps))/n
-	# loss = loss.sum(axis=0)
-	# return loss
-	"""
-	for numerical stability use log sum:
-		??max_val = (-input).clamp(min=0)
-		??loss = input - input * target + max_val + ((-max_val).exp() + (-input - max_val).exp()).log()
-		https://discuss.pytorch.org/t/numerical-stability-of-bcewithlogitsloss/8246
-		http://tagkopouloslab.ucdavis.edu/?p=2197
-		https://www.xarg.org/2016/06/the-log-sum-exp-trick-in-machine-learning/
+	A typical L2 norm aka. square error.
 	"""
 	y = yin.copy()
-	n = y.shape[0]
-	max_value = np.clip(pred, eps, 1-eps)
-	loss = -(y * np.log(max_value) + (1-y) * np.log(1-max_value))/n
-	loss = loss.sum(axis=0)
-	return loss
+	return np.linalg.norm(pred - y, ord=2)
 
 def _pos_sigmoid(x):
 	z = np.exp(-x)
@@ -125,16 +99,25 @@ def terminating_cond(nite, max_iters):
 def main(opts):
 	max_epochs = opts['max_epochs']
 	from sklearn import datasets
-	breast_cancer = datasets.load_breast_cancer()
-	X, y = breast_cancer.data, breast_cancer.target
-	theta = logistic_regression(X, y, opts, thres=10**-5, max_epochs=max_epochs)
-
+	diabetes = datasets.load_diabetes()
+	X, y = diabetes.data, diabetes.target
+	theta, pred = linear_regression(X[:, np.newaxis, 2], y, opts, thres=10**-5, max_epochs=max_epochs)
+	y = np.expand_dims(y,axis=1)
 	# plot
 	# input("Press Enter to continue...")
 	"""
-	TODO: plotting classfication boundaries
+	plotting data and predictions as well as regression lines.
 	"""
+	diabetes_X = X[:, np.newaxis, 2]
+	idx = np.argsort(diabetes_X, axis=0)
+	plt.scatter(diabetes_X[idx].squeeze(1), y[idx].squeeze(1),  color='black')
+	plt.plot(diabetes_X[idx].squeeze(1), pred[idx].squeeze(1), color='blue', linewidth=3)
 
+	plt.xticks(())
+	plt.yticks(())
+
+	plt.show()
+	input("Press Enter to continue...")
 	"""
 	TODO: plotting model parameters using hinton diagram
 	"""
@@ -143,7 +126,7 @@ def main(opts):
 if __name__ == '__main__':
 	import argparse
 
-	parser = argparse.ArgumentParser(description='run logistic regression.')
+	parser = argparse.ArgumentParser(description='run linear regression.')
 	parser.add_argument('--lr', dest='lr',
 					  help='learning rate',
 					  default=1e-3, type=float)

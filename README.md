@@ -13,7 +13,10 @@ A collection of machine learning codes in python's numpy and tensorflow.
 ### Linear Models
 * Logistic Regression [13 Jan 2021]
 	* l2 regularization [15 Jan 2021]
-
+* Linear Regression [15 Jan 2021]
+	* Ridge Regression [15 Jan 2021]
+	* LASSO [15 Jan 2021]
+	
 ## Requirements
 Install requirements.txt file to make sure correct versions of libraries are being used.
 
