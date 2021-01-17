@@ -20,7 +20,7 @@ A collection of machine learning codes in python's numpy and tensorflow.
 ## Requirements
 Install requirements.txt file to make sure correct versions of libraries are being used.
 
-* Python 3.5.x
+* Python 3.8.x
 * Jupyterlab==2.2.9
 * Numpy==1.19.4
 * Opencv-python==4.4.0.46
