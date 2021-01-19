@@ -13,6 +13,7 @@ def ridge_regression(Xin, yin, opts, thres=10**-5, max_epochs=200):
 	Perform ridge regression on an input row matrix X and a target vector y.
 	See: http://cs229.stanford.edu/notes-spring2019/cs229-notes1.pdf
 		 http://ciml.info/dl/v0_99/ciml-v0_99-ch07.pdf
+		 http://cazencott.info/dotclear/public/lectures/ma2823_2017/slides/iml_chap7_regularization.pdf
 	"""
 	X = Xin.copy() # safety
 	y = yin.copy()
@@ -94,6 +95,9 @@ def main(opts):
 	input("Press Enter to continue...")
 	"""
 	TODO: plotting model parameters using hinton diagram
+	"""
+	"""
+	TODO: plotting the solution path
 	"""
 	return
 
