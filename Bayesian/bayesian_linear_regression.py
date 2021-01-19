@@ -45,7 +45,7 @@ class BayesLinReg(object):
 
 	@property
 	def weights_dist(self):
-		return stats.multivariate_normal(mean=self.mean, cov=np.linalg.pinv(self.invcov_mat))
+		return stats.multivariate_normal(mean=self.mean, cov=np.linalg.inv(self.invcov_mat))
 
 def main(opts):
 	from sklearn import metrics
