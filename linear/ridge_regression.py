@@ -76,6 +76,9 @@ def main(opts):
 	from sklearn import datasets
 	diabetes = datasets.load_diabetes()
 	X, y = diabetes.data, diabetes.target
+	# whitening
+	X = (X - np.mean(X, axis=0)) / np.std(X, axis=0)
+	
 	theta, pred = ridge_regression(X[:, np.newaxis, 2], y, opts, thres=10**-5, max_epochs=max_epochs)
 	y = np.expand_dims(y,axis=1)
 	# plot
@@ -93,9 +96,16 @@ def main(opts):
 
 	plt.show()
 	input("Press Enter to continue...")
+	plt.close()
 	"""
 	TODO: plotting model parameters using hinton diagram
 	"""
+	from hinton_diagram import hinton
+	h_theta = theta.copy() # safety for plotting
+	hinton(h_theta)
+	plt.show()
+	input("Press Enter to continue...")
+	plt.close()
 	"""
 	TODO: plotting the solution path
 	"""

@@ -18,7 +18,7 @@ def pca(Xin):
 	ni, nd = X.shape
 
 	# centering
-	X = X - X.mean(axis=0)
+	X = (X - np.mean(X, axis=0)) / np.std(X, axis=0)
 
 	# TODO: PCA for small samples where nd >> ni
 	C = np.cov(X.T)

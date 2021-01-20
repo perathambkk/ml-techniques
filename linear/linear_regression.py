@@ -8,7 +8,7 @@ import pandas as pd
 import matplotlib.pyplot as plt 
 eps = np.finfo(float).eps
 
-def linear_regression(Xin, yin, opts, thres=10**-5, max_epochs=200):
+def linear_regression(Xin, yin, opts):
 	"""
 	Perform linear regression on an input row matrix X and a target vector y.
 	See: http://cs229.stanford.edu/notes-spring2019/cs229-notes1.pdf
@@ -58,22 +58,15 @@ def square_loss(pred, yin):
 	y = yin.copy()
 	return np.linalg.norm(pred - y, ord=2)
 
-def terminating_cond(nite, max_iters):
-	if nite >= max_iters:
-		print('[Info] terminate at iter: {}'.format(nite))
-		return True
-	# elif np.linalg.norm(mu - nmu) < thres:
-	#   print('[Info] terminate at iter: {}'.format(nite))
-	#   return True
-	else:
-		return False
-
 def main(opts):
-	max_epochs = opts['max_epochs']
 	from sklearn import datasets
 	diabetes = datasets.load_diabetes()
 	X, y = diabetes.data, diabetes.target
-	theta, pred = linear_regression(X[:, np.newaxis, 2], y, opts, thres=10**-5, max_epochs=max_epochs)
+	# whitening
+	X = (X - np.mean(X, axis=0)) / np.std(X, axis=0)
+
+	theta, pred = linear_regression(X[:, np.newaxis, 2], y, opts)
+	# theta, pred = linear_regression(X, y, opts)
 	y = np.expand_dims(y,axis=1)
 	# plot
 	# input("Press Enter to continue...")
@@ -90,9 +83,18 @@ def main(opts):
 
 	plt.show()
 	input("Press Enter to continue...")
+	plt.close()
 	"""
 	TODO: plotting model parameters using hinton diagram
 	"""
+	from hinton_diagram import hinton
+	h_theta = theta.copy() # safety for plotting
+	# h_theta = (h_theta - np.mean(h_theta, axis=0)) / np.std(h_theta, axis=0)
+	# h_theta = np.squeeze(np.stack((h_theta, h_theta)))
+	hinton(h_theta)
+	plt.show()
+	input("Press Enter to continue...")
+	plt.close()
 	return
 
 if __name__ == '__main__':
@@ -105,9 +107,6 @@ if __name__ == '__main__':
 	parser.add_argument('--bsize', dest='bsize',
 					  help='batch size',
 					  default=16, type=int)
-	parser.add_argument('--max_epochs', dest='max_epochs',
-					  help='number of iterations to train',
-					  default=200, type=int)
 	args = parser.parse_args()
 	opts = vars(args)
 

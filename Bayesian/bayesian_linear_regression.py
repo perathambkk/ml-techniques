@@ -55,6 +55,9 @@ def main(opts):
 	from sklearn import datasets
 	diabetes = datasets.load_diabetes()
 	X, y = diabetes.data, diabetes.target
+	# whitening
+	X = (X - np.mean(X, axis=0)) / np.std(X, axis=0)
+	
 	model = BayesLinReg(num_feas=X.shape[1], alpha=alpha, beta=beta)
 
 	y_pred = np.empty(len(y))
