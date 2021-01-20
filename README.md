@@ -15,7 +15,7 @@ A collection of machine learning codes in python's numpy and tensorflow.
 	* l2 regularization [15 Jan 2021]
 * Linear Regression [16 Jan 2021]
 	* Ridge Regression [18 Jan 2021]
-	* LASSO [1x Jan 2021]
+	* LASSO [20 Jan 2021]
 ### Bayesian Models
 * Bayesian Linear Regression [19 Jan 2021]
 
