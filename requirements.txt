@@ -16,11 +16,13 @@ certifi==2020.12.5        # via requests
 cffi==1.14.4              # via argon2-cffi
 chardet==4.0.0            # via requests
 cloudpickle==1.6.0        # via tensorflow-probability
+cvxpy==1.1.7              # via -r requirements.in
 cycler==0.10.0            # via matplotlib
 decorator==4.4.2          # via ipython, networkx, tensorflow-probability
 defusedxml==0.6.0         # via nbconvert
 dill==0.3.3               # via tensorflow-datasets
 dm-tree==0.1.5            # via tensorflow-probability
+ecos==2.0.7.post1         # via cvxpy
 entrypoints==0.3          # via nbconvert
 flatbuffers==1.12         # via tensorflow
 future==0.18.2            # via tensorflow-datasets
@@ -58,10 +60,11 @@ nbformat==5.0.8           # via nbclient, nbconvert, notebook
 nest-asyncio==1.4.3       # via nbclient
 networkx==2.5             # via -r requirements.in
 notebook==6.1.5           # via jupyterlab, jupyterlab-server
-numpy==1.19.4             # via -r requirements.in, h5py, keras-preprocessing, matplotlib, opencv-python, opt-einsum, pandas, scikit-learn, scipy, seaborn, tensorboard, tensorflow, tensorflow-datasets, tensorflow-probability
+numpy==1.19.4             # via -r requirements.in, cvxpy, ecos, h5py, keras-preprocessing, matplotlib, opencv-python, opt-einsum, osqp, pandas, qdldl, scikit-learn, scipy, scs, seaborn, tensorboard, tensorflow, tensorflow-datasets, tensorflow-probability
 oauthlib==3.1.0           # via requests-oauthlib
 opencv-python==4.4.0.46   # via -r requirements.in
 opt-einsum==3.3.0         # via tensorflow
+osqp==0.6.2.post0         # via cvxpy
 packaging==20.8           # via bleach
 pandas==1.1.1             # via -r requirements.in, seaborn
 pandocfilters==1.4.3      # via nbconvert
@@ -83,11 +86,13 @@ pyrsistent==0.17.3        # via jsonschema
 python-dateutil==2.8.1    # via jupyter-client, matplotlib, pandas
 pytz==2020.4              # via pandas
 pyzmq==20.0.0             # via jupyter-client, notebook
+qdldl==0.1.5.post0        # via osqp
 requests-oauthlib==1.3.0  # via google-auth-oauthlib
 requests==2.25.1          # via jupyterlab-server, requests-oauthlib, tensorboard, tensorflow-datasets
 rsa==4.6                  # via google-auth
 scikit-learn==0.24.0      # via -r requirements.in
-scipy==1.5.4              # via scikit-learn, seaborn
+scipy==1.5.4              # via cvxpy, ecos, osqp, qdldl, scikit-learn, scs, seaborn
+scs==2.1.2                # via cvxpy
 seaborn==0.11.0           # via -r requirements.in
 send2trash==1.5.0         # via notebook
 six==1.15.0               # via absl-py, argon2-cffi, astunparse, bleach, cycler, dm-tree, google-auth, google-pasta, grpcio, h5py, jsonschema, keras-preprocessing, promise, protobuf, python-dateutil, tensorboard, tensorflow, tensorflow-datasets, tensorflow-probability

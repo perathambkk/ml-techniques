@@ -32,7 +32,7 @@ def ridge_regression(Xin, yin, opts, thres=10**-5, max_epochs=200):
 	theta = X^{-1} * y. use a pseudo inverse for X^{-1}.
 	Solve the normal equation X'X\theta = X'y.
 	"""
-	theta = np.matmul(np.matmul(np.linalg.pinv(np.matmul(X.T, X) + lamb_const*np.diag(np.ones(nd))), X.T), y)
+	theta = np.matmul(np.matmul(np.linalg.pinv(np.matmul(X.T, X) + lamb_const*np.diag(np.ones(nd+1))), X.T), y)
 	# theta = np.matmul(np.linalg.pinv(X), y)
 	pred = np.matmul(X, theta)
 	loss = square_loss(pred, y, theta, lamb_const)
