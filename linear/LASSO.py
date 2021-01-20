@@ -56,9 +56,6 @@ def LASSO(Xin, yin, opts, thres=10**-5, max_epochs=200):
 			pred = np.matmul(bX, theta)
 			loss += square_loss(pred, by, theta, lamb_const)
 
-			"""
-			TODO: This loop causes an overflow if batch size > 1.
-			"""
 			for j in range(nd + 1): # for each dimension/feature
 				a_j = 2.0 * np.linalg.norm(bX[:, j], ord=2) 
 				w = theta[j]
@@ -67,6 +64,7 @@ def LASSO(Xin, yin, opts, thres=10**-5, max_epochs=200):
 				# bXi[:, j] = 0
 				y_pred = np.matmul(bX, theta)
 				c_j = 2.0 * (np.matmul(bX[:, j].T, by - y_pred + w*bX[:, j])).mean(axis=0)
+				c_j /= bsize # This line helps prevent an overflow if batch size > 1.
 				if c_j == 0 or a_j == 0:
 					theta[j] = w
 				else:
@@ -160,7 +158,7 @@ def main(opts):
 	input("Press Enter to continue...")
 	plt.close()
 	"""
-	TODO: plotting model parameters using hinton diagram
+	plotting model parameters using hinton diagram
 	"""
 	from hinton_diagram import hinton
 	h_theta = theta.copy() # safety for plotting

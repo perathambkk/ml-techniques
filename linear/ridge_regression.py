@@ -98,7 +98,7 @@ def main(opts):
 	input("Press Enter to continue...")
 	plt.close()
 	"""
-	TODO: plotting model parameters using hinton diagram
+	plotting model parameters using hinton diagram
 	"""
 	from hinton_diagram import hinton
 	h_theta = theta.copy() # safety for plotting
