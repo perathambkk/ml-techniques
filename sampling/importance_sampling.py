@@ -12,6 +12,7 @@ eps = np.finfo(float).eps
 """
 Importance sampling is a framework. It enables estimation of an r.v. X from a black box target distribution f 
 using a known proposal distribution g (importance distribution) representing an r.v. Y. 
+Well, we cannot sample from f but we can evaluate using f.
 
 That is, we sample Y from g to estimate probabilities of X in f.
 We multiply h(x) which is the probability value for each sample with the importance weight f/g.
