@@ -10,8 +10,8 @@ from scipy import stats
 eps = np.finfo(float).eps
 
 """
-Importance sampling is a framework. It enables estimation of a r.v. X from a black box target distribution f 
-using a known proposal distribution g (importance distribution) representing a r.v. Y. 
+Importance sampling is a framework. It enables estimation of an r.v. X from a black box target distribution f 
+using a known proposal distribution g (importance distribution) representing an r.v. Y. 
 Well, we cannot sample from f but we can evaluate using f.
 
 That is, we sample Y from g to estimate probabilities of X in f.
