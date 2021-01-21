@@ -64,7 +64,7 @@ def LASSO(Xin, yin, opts, thres=10**-5, max_epochs=200):
 				# bXi[:, j] = 0
 				y_pred = np.matmul(bX, theta)
 				c_j = 2.0 * (np.matmul(bX[:, j].T, by - y_pred + w*bX[:, j])).mean(axis=0)
-				c_j /= bsize # This line helps prevent an overflow if batch size > 1.
+				c_j /= bsize # This line helps prevent an overflow if batch size > 1. https://github.com/StanLaw/lasso
 				if c_j == 0 or a_j == 0:
 					theta[j] = w
 				else:
