@@ -10,6 +10,7 @@ A collection of machine learning codes in python's numpy and tensorflow.
 	* Unnormalized Spectral Clustering [23 Dec 2020]
 ### Manifold Learning
 * PCA [9 Jan 2021]
+* Classical MDS [22 Jan 2021]
 ### Linear Models
 * Logistic Regression [13 Jan 2021]
 	* l2 regularization [15 Jan 2021]
