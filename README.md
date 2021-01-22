@@ -18,6 +18,8 @@ A collection of machine learning codes in python's numpy and tensorflow.
 	* LASSO [20 Jan 2021]
 ### Bayesian Models
 * Bayesian Linear Regression [19 Jan 2021]
+### Sampling Methods
+* Importance Sampling [21 Jan 2021]
 
 ## Requirements
 Install requirements.txt file to make sure correct versions of libraries are being used.

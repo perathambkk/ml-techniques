@@ -15,7 +15,7 @@ using a known proposal distribution g (importance distribution) representing an 
 Well, we cannot sample from f but we can evaluate using f.
 
 That is, we sample Y from g to estimate probabilities of X in f.
-We multiply h(x) which is the probability value for each sample with the importance weight f/g.
+We multiply some function h(x) with the probability value for each sample using the importance weight f/g.
 
 See: http://www.acme.byu.edu/wp-content/uploads/2016/12/Vol1B-MonteCarlo2-2017.pdf
 	https://machinelearning1.wordpress.com/2017/10/22/importance-sampling-a-tutorial/
