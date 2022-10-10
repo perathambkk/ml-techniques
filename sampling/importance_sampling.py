@@ -23,7 +23,7 @@ See: http://www.acme.byu.edu/wp-content/uploads/2016/12/Vol1B-MonteCarlo2-2017.p
 def estimate_p_gt_3_for_gaussian(nsamples=2000):
 	"""
 	 The answer should approach 0.0013499 for sufficiently large samples.
-	 See: http://www.acme.byu.edu/wp-content/uploads/2016/12/Vol1B-MonteCarlo2-2017.pdf
+	 See: https://web.archive.org/web/20200822153616/http://www.acme.byu.edu/wp-content/uploads/2016/12/Vol1B-MonteCarlo2-2017.pdf
 	"""
 	h = lambda x: x > 3
 	f = lambda x: stats.norm().pdf(x)

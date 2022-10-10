@@ -11,10 +11,7 @@ import scipy.sparse.linalg as linalg
 
 def naivebayes(X):
 	"""
-	Perform spectral clustering on an input row matrix X.
-	mode \in {'affinity','neighborhood','gaussian'}
-	See: http://www.math.ucsd.edu/~fan/research/revised.html
-		http://www.math.ucsd.edu/~fan/research/cbms.pdf
+	Perform naivebayes estimation.
 	"""
 	ni, nd = X.shape
 	L = laplacian_graph(X, mode='affinity', knn=knn, eta=eta, sigma=sigma)
