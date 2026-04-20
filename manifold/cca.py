@@ -16,6 +16,8 @@ from numpy import linalg as LA
 def cca(Xin, Yin):
 	"""
 	Perform Canonical Correlation Analysis (CCA) on an input row matrix X ,Y.
+
+	I do not know but some just perform svd/eig on Cxy. wx left vectors, wy right vectors.
 	
 	See: Hardoon, D. R.; Szedmak, S.; Shawe-Taylor, J. (2004). "Canonical Correlation Analysis: An Overview with Application to Learning Methods". Neural Computation. 16 (12): 2639–2664
 		https://en.wikipedia.org/wiki/Canonical_correlation
