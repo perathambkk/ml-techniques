@@ -39,6 +39,8 @@ Install requirements.txt file to make sure correct versions of libraries are bei
 * Tensorflow-probability==0.11.1
 * cvxpy==1.1.7
 
+or whatsover emvironment having at least Python, Numpy, Scikit, sklearn, pandas.
+
 ## Resources
 * Daumé III, Hal. "A course in machine learning." Publisher, ciml. info 5 (2012): 69.
 * Bishop, Christopher M. Pattern recognition and machine learning. springer, 2006.
