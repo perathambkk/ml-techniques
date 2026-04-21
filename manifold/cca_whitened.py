@@ -15,7 +15,7 @@ from numpy import linalg as LA
 
 def _sq_inverse(X):
     X = X.copy()
-    X = 0.5 * (X + X.conj().T)
+    X = 0.5 * (X + X.conj().T) # or X = np.max(X, X.T)
 
     L, V = np.linalg.eigh(X)
     
