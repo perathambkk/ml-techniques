@@ -17,7 +17,7 @@ def cca(Xin, Yin):
 	"""
 	Perform Canonical Correlation Analysis (CCA) on an input row matrix X ,Y.
 
-	I do not know but some just perform svd/eig on Cxy. wx left vectors, wy right vectors.
+	I do not know but some just perform svd/eig on Cxy. wx left vectors, wy right vectors. as in the sklearn's cca implementation.
 	
 	See: Hardoon, D. R.; Szedmak, S.; Shawe-Taylor, J. (2004). "Canonical Correlation Analysis: An Overview with Application to Learning Methods". Neural Computation. 16 (12): 2639–2664
 		https://en.wikipedia.org/wiki/Canonical_correlation
