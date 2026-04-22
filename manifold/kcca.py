@@ -91,7 +91,7 @@ def _sq_inverse(Xin):
 
 def kcca(Xin, Yin):
 	"""
-	Perform Canonical Correlation Analysis (CCA) on an input row matrix X ,Y.
+	Perform Kernel Canonical Correlation Analysis (KCCA) on an input row matrix X ,Y.
 
 	with a proper whitening and precise numerical routines as asked ChatGPT and Gemini -.-
 	
