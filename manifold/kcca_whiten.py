@@ -153,8 +153,8 @@ def kcca(Xin, Yin):
 	# create coordinate matrix
 	proj_v = v[:,0:2] # projection matrix
 	proj_u = u[:,0:2] # projection matrix
-	X_r = KX @ _sq_inverse(shrink_KX) @ proj_u
-	Y_r = KY @ _sq_inverse(shrink_KY) @ proj_v
+	X_r = KX @ proj_u
+	Y_r = KY @ proj_v
 
 	return X_r, Y_r
 
