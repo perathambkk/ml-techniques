@@ -41,9 +41,9 @@ Install requirements.txt file to make sure correct versions of libraries are bei
 or whatsover environment having at least Python, Numpy, Scikit, sklearn, Pandas.
 
 ## Resources
-* Daumé III, Hal. "A course in machine learning." Publisher, ciml. info 5 (2012): 69.
-* Bishop, Christopher M. Pattern recognition and machine learning. springer, 2006.
-* Murphy, Kevin P. Machine learning: a probabilistic perspective. MIT press, 2012.
+* Daumé III, Hal. "A course in machine learning." Publisher, ciml. info 5 (2012): 69. [PDF](http://ciml.info/)
+* Bishop, Christopher M. Pattern recognition and machine learning. springer, 2006. [PDF](https://www.microsoft.com/en-us/research/publication/pattern-recognition-machine-learning/?msockid=1fab99c1e03c684d3c998fe0e1796985)
+* Murphy, Kevin P. Machine learning: a probabilistic perspective. MIT press, 2012. [PDF](https://probml.github.io/pml-book/book0.html) [new books](https://probml.github.io/pml-book/)
 * Miller, Jeffrey W. mathematicalmonk youtube lecture study page [Machine Learning Playlist](https://www.youtube.com/playlist?list=PLD0F06AA0D2E8FFBA).
 
 ## License
