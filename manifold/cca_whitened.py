@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 # import scipy.sparse.linalg as linalg
 from numpy import linalg as LA
+from scipy import linalg as SLA
 
 # Import the libraries
 # from sklearn.cross_decomposition import CCA
@@ -17,7 +18,7 @@ def _sq_inverse(Xin):
     X = Xin.copy()
     X = 0.5 * (X + X.conj().T) # or X = np.maximum(X, X.T)
 
-    L, V = np.linalg.eigh(X)
+    L, V = LA.eigh(X)
     
     L = np.diag(1.0/np.sqrt(L))
     
@@ -56,8 +57,8 @@ def cca(Xin, Yin):
 	B = Cxx_sqinv @ Cxy @ Cyy_sqinv
 
 	# eigen decomposition
-	u, s, v = LA.svd(B)
-	ind = np.argsort(s, axis=0) # sorting descending
+	u, s, v = LA.svd(B, hermitian=True)
+	ind = np.argsort(-s, axis=0) # sorting descending
 	v = v[ind]
 	u = u[:, ind]
 	

@@ -49,9 +49,9 @@ def cca(Xin, Yin):
 	B = Cyy
 	sy, uy = SLA.eig(A, b=B)
 
-	ind = np.argsort(sx, axis=0) # sorting descending
+	ind = np.argsort(-sx, axis=0) # sorting descending
 	ux = ux[:, ind]
-	ind = np.argsort(sy, axis=0) # sorting descending
+	ind = np.argsort(-sy, axis=0) # sorting descending
 	uy = uy[:, ind]
 	
 	# create coordinate matrix

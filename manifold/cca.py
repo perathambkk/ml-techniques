@@ -38,7 +38,7 @@ def cca(Xin, Yin):
 
 	# eigen decomposition
 	u, s, v = LA.svd(B)
-	# ind = np.argsort(-w, axis=0) # sorting descending
+	ind = np.argsort(-s, axis=0) # sorting descending
 	v = v[ind]
 	u = u[:, ind]
 	
