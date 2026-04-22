@@ -13,8 +13,8 @@ from numpy import linalg as LA
 # Import the libraries
 # from sklearn.cross_decomposition import CCA
 
-def _sq_inverse(X):
-    X = X.copy()
+def _sq_inverse(Xin):
+    X = Xin.copy()
     X = 0.5 * (X + X.conj().T) # or X = np.maximum(X, X.T)
 
     L, V = np.linalg.eigh(X)
