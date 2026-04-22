@@ -111,7 +111,7 @@ def main():
 	X, color = datasets.make_swiss_roll(n_samples=2500)
 
 	# dimred
-	X_r = pca(X)
+	X_r = kpca(X)
 
 	# plot
 	fig = plt.figure()
