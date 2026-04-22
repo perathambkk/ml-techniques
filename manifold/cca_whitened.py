@@ -65,8 +65,10 @@ def cca(Xin, Yin):
 	# create coordinate matrix
 	proj_v = v[:,0:2] # projection matrix
 	proj_u = u[:,0:2] # projection matrix
-	X_r = np.matmul(X, proj_u)
-	Y_r = np.matmul(Y, proj_v)
+	# X_r = np.matmul(X, proj_u)
+	# Y_r = np.matmul(Y, proj_v)
+	X_r = X @ Cxx_sqinv @ proj_u
+	Y_r = y @ Cyy_sqinv @ proj_v
 
 	return X_r, Y_r
 
