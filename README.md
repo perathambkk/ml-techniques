@@ -10,6 +10,7 @@ A collection of machine learning codes in python's numpy.
 	* Unnormalized Spectral Clustering [23 Dec 2020]
 ### Manifold Learning
 * PCA [9 Jan 2021]
+* Kernel PCA (KPCA) [22 Apr 2026]
 * Classical MDS [22 Jan 2021]
 * Fast ICA [23 Jan 2021]
 * Canonical Corelation Analysis (CCA) [21 Apr 2026]
