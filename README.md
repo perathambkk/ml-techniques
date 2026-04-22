@@ -13,6 +13,7 @@ A collection of machine learning codes in python's numpy and tensorflow.
 * Classical MDS [22 Jan 2021]
 * Fast ICA [23 Jan 2021]
 * Canonical Corelation Analysis (CCA) [21 Apr 2026]
+* Kernel Canonical Corelation Analysis (KCCA) [22 Apr 2026]
 ### Linear Models
 * Logistic Regression [13 Jan 2021]
 	* l2 regularization [15 Jan 2021]
