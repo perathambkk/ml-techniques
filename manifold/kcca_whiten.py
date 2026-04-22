@@ -139,12 +139,12 @@ def kcca(Xin, Yin):
 	I_mat = np.eye(KY.shape[0], KY.shape[1])
 	shrink_KY = KY + (reg_kappa * I_mat)
 
-	B =  _sq_inverse(shrink_KX) @ KY @ _sq_inverse(shrink_KY)
+	B =  _sq_inverse(shrink_KX) @ KX @ KY @ _sq_inverse(shrink_KY) 
 	su, u = LA.eigh(B)
 	ind = np.argsort(-su, axis=0) # sorting descending
 	u = u[:, ind]
 
-	B = _sq_inverse(shrink_KY) @ KX @ _sq_inverse(shrink_KX)
+	B = _sq_inverse(shrink_KY)@ KY @ KX @ _sq_inverse(shrink_KX) 
 	sv, v = LA.eigh(B)
 	ind = np.argsort(-sv, axis=0) # sorting descending
 	v = v[:, ind]
