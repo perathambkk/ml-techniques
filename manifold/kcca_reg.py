@@ -134,9 +134,9 @@ def kcca_reg(Xin, Yin, reg_kappa=0.01):
 	# B = Cxx_sqinv @ Cxy @ Cyy_sqinv
 
 	# eigen decomposition
-	I_mat = np.eyes(KX.shape[0], KX.shape[1])
+	I_mat = np.eye(KX.shape[0], KX.shape[1])
 	shrink_KX = KX + (reg_kappa * I_mat)
-	I_mat = np.eyes(KY.shape[0], KY.shape[1])
+	I_mat = np.eye(KY.shape[0], KY.shape[1])
 	shrink_KY = KY + (reg_kappa * I_mat)
 
 	B = LA.pinv(shrink_KX) @ KY @ LA.pinv(shrink_KY) @ KX
