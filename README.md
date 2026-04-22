@@ -1,5 +1,5 @@
 # ml-techniques
-A collection of machine learning codes in python's numpy and tensorflow.
+A collection of machine learning codes in python's numpy.
 
 ## Techniques
 ### Clustering
@@ -35,9 +35,6 @@ Install requirements.txt file to make sure correct versions of libraries are bei
 * Pandas==1.1.1
 * Seaborn==0.11.0
 * Scikit-learn==0.24.0
-* Tensorflow==2.4.0
-* Tensorflow-datasets==4.1.0
-* Tensorflow-probability==0.11.1
 * cvxpy==1.1.7
 
 or whatsover environment having at least Python, Numpy, Scikit, sklearn, Pandas.
