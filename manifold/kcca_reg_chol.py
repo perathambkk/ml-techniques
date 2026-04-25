@@ -227,7 +227,7 @@ def kcca_reg_chol(Xin, Yin, reg_kappa=0.01):
 	Zyx = Ry.T @ Rx
 
 	# B = LA.pinv(shrink_KX) @ KY @ LA.pinv(shrink_KY) @ KX
-	B = LA.pinv(S) @ Zxy @ LA.pinv(Zyy + reg_kappa * I_mat) @ Zyx @ LA.pinv(S.T)
+	B = LA.pinv(S) @ Zxy @ LA.pinv(Zyy + reg_kappa * I_mat) @ Zyx @ LA.pinv(S.T) # scipy.linalg.solve_triangular(L, np.eye(L.shape[0]), lower=True)
 	su, u = LA.eigh(B)
 	ind = np.argsort(-su, axis=0) # sorting descending
 	u = u[:, ind]
