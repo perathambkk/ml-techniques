@@ -213,7 +213,7 @@ def kcca_reg_chol(Xin, Yin, reg_kappa=0.01):
 	# B = Cxx_sqinv @ Cxy @ Cyy_sqinv
 
 	# eigen decomposition
-	# I_mat = np.eyes(KX.shape[0], KX.shape[1])
+	I_mat = np.eyes(KX.shape[0], KX.shape[1])
 	# shrink_KX = KX + (reg_kappa * I_mat)
 	# I_mat = np.eyes(KY.shape[0], KY.shape[1])
 	# shrink_KY = KY + (reg_kappa * I_mat)
@@ -227,12 +227,14 @@ def kcca_reg_chol(Xin, Yin, reg_kappa=0.01):
 	Zyx = Ry.T @ Rx
 
 	# B = LA.pinv(shrink_KX) @ KY @ LA.pinv(shrink_KY) @ KX
-	B = LA.pinv(S) @ Zxy @ LA.pinv(Zyy) @ Zyx @ LA.pinv(S.T)
+	B = LA.pinv(S) @ Zxy @ LA.pinv(Zyy + reg_kappa * I_mat) @ Zyx @ LA.pinv(S.T)
 	su, u = LA.eigh(B)
 	ind = np.argsort(-su, axis=0) # sorting descending
 	u = u[:, ind]
 
 	# B = LA.pinv(shrink_KY) @ KX @ LA.pinv(shrink_KX) @ KY
+	_, S ,_ = incomplete_cholesky_decomposition(KY)
+	B = LA.pinv(S) @ Zyx @ LA.pinv(Zxx + reg_kappa * I_mat) @ Zxy @ LA.pinv(S.T)
 	sv, v = LA.eigh(B)
 	ind = np.argsort(-sv, axis=0) # sorting descending
 	v = v[:, ind]

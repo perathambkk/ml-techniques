@@ -233,6 +233,8 @@ def kcca_chol(Xin, Yin, reg_kappa=0.01):
 	u = u[:, ind]
 
 	# B = LA.pinv(shrink_KY) @ KX @ LA.pinv(shrink_KX) @ KY
+	_, S ,_ = incomplete_cholesky_decomposition(KY)
+	B = LA.pinv(S) @ Zyx @ LA.pinv(Zxx + reg_kappa * I_mat) @ Zxy @ LA.pinv(S.T)
 	sv, v = LA.eigh(B)
 	ind = np.argsort(-sv, axis=0) # sorting descending
 	v = v[:, ind]
