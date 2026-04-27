@@ -125,7 +125,7 @@ def _sq_inverse(Xin):
 	Xres = V.conj() @ L @ V.T.conj()
 	return Xres
 
-def kcca_reg_chol(Xin, Yin, reg_kappa=0.01):
+def kcca_reg_pgso(Xin, Yin, reg_kappa=0.01):
 	"""
 	Perform Regularized Kernel Canonical Correlation Analysis (RKCCA) on an input row matrix X ,Y.
 
@@ -218,7 +218,7 @@ def main():
 	from time import time
 	t0 = time()
 	# dimred
-	X_r, Y_r = kcca_reg_chol(X, Y)
+	X_r, Y_r = kcca_reg_pgso(X, Y)
 	t1 = time()
 	print('[Info] Canonical Component Analysis done in {:.2g} sec.'.format(t1 - t0))
 

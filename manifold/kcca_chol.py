@@ -262,7 +262,7 @@ def main():
 	from time import time
 	t0 = time()
 	# dimred
-	X_r, Y_r = kcca_reg_chol(X, Y)
+	X_r, Y_r = kcca_chol(X, Y)
 	t1 = time()
 	print('[Info] Canonical Component Analysis done in {:.2g} sec.'.format(t1 - t0))
 
