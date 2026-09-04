@@ -29,6 +29,7 @@ A collection of machine learning codes in python's numpy.
 * Monte Carlo pi compute [since ~ 7 Aug 2018]
 ### Attractor
 * Lorenz attractor [4 Sep 2026]
+* TSP search with an attractor [4 Sep 2026]
 
 ## Requirements
 Install requirements.txt file to make sure correct versions of libraries are being used.
