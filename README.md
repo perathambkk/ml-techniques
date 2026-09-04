@@ -26,6 +26,7 @@ A collection of machine learning codes in python's numpy.
 * Bayesian Linear Regression [19 Jan 2021]
 ### Sampling Methods
 * Importance Sampling [21 Jan 2021]
+* Monte Carlo pi compute [since ~ 7 Aug 2018]
 
 ## Requirements
 Install requirements.txt file to make sure correct versions of libraries are being used.
