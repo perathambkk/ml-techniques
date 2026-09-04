@@ -27,6 +27,8 @@ A collection of machine learning codes in python's numpy.
 ### Sampling Methods
 * Importance Sampling [21 Jan 2021]
 * Monte Carlo pi compute [since ~ 7 Aug 2018]
+### Attractor
+* Lorenz attractor [4 Sep 2026]
 
 ## Requirements
 Install requirements.txt file to make sure correct versions of libraries are being used.
